@@ -22,10 +22,15 @@ module.exports = {
     runtimeChunk: 'single',
   },
   module: {
-    rules: [{
-      test: /\.css$/i,
-      use: ['style-loader', 'css-loader'],
-    },
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
     ],
   },
 };
