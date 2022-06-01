@@ -1,7 +1,7 @@
 @import './reset.css';
 
 body {
-  background-color: #fff;
+  background-color: bisque;
   width: 100vw;
   height: 100vh;
   color: #494848;
@@ -16,8 +16,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  border: solid 1px lightgray;
-  box-shadow: 0 0 30px 30px lightgray;
+  box-shadow: 0 0 100px 50px lightgoldenrodyellow;
 }
 
 .todo-header {
@@ -35,8 +34,8 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
-  border-top: solid lightgray 1px;
-  box-shadow: inset 0 0 5px lightgray;
+  border-top: solid mediumaquamarine 1px;
+  box-shadow: inset 0 0 5px mediumaquamarine;
 }
 
 .todo-new-item input {
@@ -53,12 +52,16 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
-  border-top: solid lightgray 1px;
+  border-top: solid mediumaquamarine 1px;
   padding: 10px 10px;
 }
 
 .todo-item > * {
   flex-basis: 1;
+}
+
+.todo-item input:hover {
+  cursor: pointer;
 }
 
 .todo-item p {
@@ -68,13 +71,39 @@ body {
   font-weight: bold; 
 }
 
-
-
 .icon {
   width: 20px;
   height: 20px;
   filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(165deg) brightness(84%) contrast(87%);
 }
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.todo-clear-completed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: mediumaquamarine;
+  padding: 20px;
+}
+
+.todo-clear-completed:hover {
+  cursor: pointer;
+}
+
+.todo-clear-completed p {
+  color: black;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .todo-container {
+    width: 40%;
+  }
+}
+
 
 
 
