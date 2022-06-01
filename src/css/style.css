@@ -56,10 +56,6 @@ body {
   padding: 10px 10px;
 }
 
-.todo-item > * {
-  flex-basis: 1;
-}
-
 .todo-item input:hover {
   cursor: pointer;
 }
@@ -68,7 +64,7 @@ body {
   flex-grow: 4;
   font-size: 14px;
   font-style: italic;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .icon {
@@ -103,8 +99,3 @@ body {
     width: 40%;
   }
 }
-
-
-
-
-
