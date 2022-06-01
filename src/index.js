@@ -1,13 +1,9 @@
-import _ from 'lodash';
-import './style.css';
+import './css/style.css';
+import './index.html';
 
-function component() {
-  const element = document.createElement('div');
+import Model from './modules/Model.js';
+import View from './modules/View.js';
+import Controller from './modules/Controller.js';
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpak'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+const controller = new Controller(new Model(), new View());
+controller.populateItems();
