@@ -12,33 +12,48 @@ export default class {
     }
   }
 
-  generateTemplate(itemData, updateDesciption) {
-
-    console.log(itemData.index);
+  generateTemplate(itemData, eventHandlers) {
+    const [updateDesciption, deleteItem] = eventHandlers;
     const itemTag = this.itemTemplate.content.firstElementChild.cloneNode(true);
 
     const itemDescription = itemTag.querySelector('.item-description');
     itemDescription.value = itemData.description;
 
-    itemDescription.addEventListener('focus', (e)=>{
-      e.preventDefault();
-      e.target.parentNode.classList.add('item-desciption-focus');
-      e.target.parentNode.querySelector('.more').style.display = 'none';
-      e.target.parentNode.querySelector('.bin').style.display = 'block';
+    const bin = itemTag.querySelector('.bin');
+    const more = itemTag.querySelector('.more');
+
+    bin.addEventListener('click', (e)=>{
+      deleteItem(itemData.index);
     });
 
-    itemDescription.addEventListener('input', (e)=>{
+    itemTag.addEventListener('click', (e) => {
       e.preventDefault();
-      e.target.parentNode.classList.remove('item-desciption-focus');
-      e.target.parentNode.querySelector('.more').style.display = 'block';
-      e.target.parentNode.querySelector('.bin').style.display = 'none';
-
+      itemTag.classList.add('item-edit');
+      bin.style.display = 'block';
+      more.style.display = 'none';
       
-      updateDesciption(e.target.value, itemData.index);
+      if (e.target.classList.contains('item-description')){
+        e.target.addEventListener('input', (e)=> {
+          e.preventDefault();
+          updateDesciption(e.target.value, itemData.index);
+          itemTag.classList.remove('item-edit');
+        });
+      }
     });
 
+    itemTag.addEventListener('mouseover', (e)=>{
+      bin.style.display = 'block';
+      more.style.display = 'none';
+    });
+
+    itemTag.addEventListener('mouseout', (e)=>{
+      bin.style.display = 'none';
+      more.style.display = 'block';
+    });
+    
     this.todoItems.appendChild(itemTag);
   }
+
 
   submitNewItem(handleNewItem){
     this.input.addEventListener('keypress', (e) => {

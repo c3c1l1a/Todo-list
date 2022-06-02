@@ -18,7 +18,7 @@ export default class {
     return this.items;
   }
 
-  addItem(inputValue, populateItem){
+  addItem(inputValue, populateItems){
     const item = {
       description: inputValue,
       completed: false,
@@ -28,11 +28,18 @@ export default class {
     //this.items.sort((a, b) => b.index - a.index);
     this.items.push(item);
     this._updateLocalStorage(this.items);
-    populateItem();
+    populateItems();
   }
 
   updateItem(value, index){
     this.items[index].description = value;
     this._updateLocalStorage(this.items);
+  }
+
+  deleteItem(index, populateItems){
+    this.items.splice(index, 1);
+    this.items.map((item, i)=> item.index = i );
+    this._updateLocalStorage(this.items);
+    populateItems();
   }
 }

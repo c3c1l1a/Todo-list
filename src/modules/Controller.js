@@ -4,16 +4,18 @@ export default class {
     this.view = view;
   }
 
-
   populateItems() {
     const items = this.model.getItems();
 
     this.view.refreshDOM();
     const updateDesriptionHander = this.handleDescriptionUpdate.bind(this);
-    items.slice(0).reverse().map((item) => this.view.generateTemplate(item, updateDesriptionHander));
+    const deleteItemHandler = this.handleDeleteItem.bind(this);
+
+    const eventHandlers = [updateDesriptionHander, deleteItemHandler]
+    items.slice(0).reverse().map((item) => this.view.generateTemplate(item, eventHandlers));
   }
 
-  _handleNewItem(inputValue){
+  handleNewItem(inputValue){
     this.model.addItem(inputValue, this.populateItems.bind(this));
   }
 
@@ -21,7 +23,11 @@ export default class {
     this.model.updateItem(value, index);
   }
 
+  handleDeleteItem(index){
+    this.model.deleteItem(index, this.populateItems.bind(this));
+  }
+
   addNewItem(){
-    this.view.submitNewItem(this._handleNewItem.bind(this));
+    this.view.submitNewItem(this.handleNewItem.bind(this));
   }
 }
