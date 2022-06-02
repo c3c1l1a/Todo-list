@@ -8,14 +8,17 @@ export default class {
   populateItems() {
     const items = this.model.getItems();
 
-    items.sort((a, b) => b.index - a.index);
-
     this.view.refreshDOM();
-    items.map((item) => this.view.generateTemplate(item));
+    const updateDesriptionHander = this.handleDescriptionUpdate.bind(this);
+    items.slice(0).reverse().map((item) => this.view.generateTemplate(item, updateDesriptionHander));
   }
 
   _handleNewItem(inputValue){
     this.model.addItem(inputValue, this.populateItems.bind(this));
+  }
+
+  handleDescriptionUpdate(value, index){
+    this.model.updateItem(value, index);
   }
 
   addNewItem(){

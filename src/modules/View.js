@@ -12,12 +12,30 @@ export default class {
     }
   }
 
-  generateTemplate(itemData) {
+  generateTemplate(itemData, updateDesciption) {
 
+    console.log(itemData.index);
     const itemTag = this.itemTemplate.content.firstElementChild.cloneNode(true);
 
-    const itemDescription = itemTag.querySelector('p');
-    itemDescription.textContent = itemData.description;
+    const itemDescription = itemTag.querySelector('.item-description');
+    itemDescription.value = itemData.description;
+
+    itemDescription.addEventListener('focus', (e)=>{
+      e.preventDefault();
+      e.target.parentNode.classList.add('item-desciption-focus');
+      e.target.parentNode.querySelector('.more').style.display = 'none';
+      e.target.parentNode.querySelector('.bin').style.display = 'block';
+    });
+
+    itemDescription.addEventListener('input', (e)=>{
+      e.preventDefault();
+      e.target.parentNode.classList.remove('item-desciption-focus');
+      e.target.parentNode.querySelector('.more').style.display = 'block';
+      e.target.parentNode.querySelector('.bin').style.display = 'none';
+
+      
+      updateDesciption(e.target.value, itemData.index);
+    });
 
     this.todoItems.appendChild(itemTag);
   }

@@ -60,11 +60,25 @@ body {
   cursor: pointer;
 }
 
-.todo-item p {
+.item-description  {
   flex-grow: 4;
+  border: none;
   font-size: 14px;
   font-style: italic;
   font-weight: bold;
+  background-color: transparent;
+}
+
+.item-description:focus-visible {
+  outline: none;
+}
+
+.item-desciption-focus {
+  border: solid 2px bisque;
+}
+
+.bin {
+  display: none;
 }
 
 .icon {
