@@ -3,11 +3,10 @@ export default class {
     this.itemTemplate = document.querySelector('.todo-item-template');
     this.todoItems = document.querySelector('.todo-items');
     this.input = document.querySelector('.new-item');
-
   }
 
-  refreshDOM(){
-    if (this.todoItems.hasChildNodes()){
+  refreshDOM() {
+    if (this.todoItems.hasChildNodes()) {
       this.todoItems.textContent = '';
     }
   }
@@ -19,57 +18,52 @@ export default class {
     const checkbox = itemTag.querySelector('.checkbox');
     checkbox.checked = itemData.completed;
 
-    checkbox.addEventListener('click', (e)=>{
+    checkbox.addEventListener('click', (e) => {
       markAsComplete(itemData.index, e.target.checked);
     });
 
     const itemDescription = itemTag.querySelector('.item-description');
     itemDescription.value = itemData.description;
-    if (itemData.completed){
+    if (itemData.completed) {
       itemDescription.classList.add('strikethrough');
     } else {
       itemDescription.classList.remove('strikethrough');
     }
 
-    itemDescription.addEventListener('input', (e)=> {
+    itemDescription.addEventListener('input', (e) => {
       e.preventDefault();
       updateDesciption(e.target.value, itemData.index);
       itemTag.classList.remove('item-edit');
     });
 
-
     const bin = itemTag.querySelector('.bin');
     const more = itemTag.querySelector('.more');
-    bin.addEventListener('click', (e)=>{
+    bin.addEventListener('click', () => {
       deleteItem(itemData.index);
     });
 
-
-    itemTag.addEventListener('mouseover', (e)=>{
+    itemTag.addEventListener('mouseover', () => {
       bin.style.display = 'block';
       more.style.display = 'none';
       itemTag.classList.add('item-edit');
     });
 
-    itemTag.addEventListener('mouseout', (e)=>{
+    itemTag.addEventListener('mouseout', () => {
       bin.style.display = 'none';
       more.style.display = 'block';
       itemTag.classList.remove('item-edit');
     });
-    
+
     this.todoItems.appendChild(itemTag);
   }
 
-
-  submitNewItem(handleNewItem){
+  submitNewItem(handleNewItem) {
     this.input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter'){
+      if (e.key === 'Enter') {
         e.preventDefault();
-        if (e.target.value.length > 0)
-          handleNewItem(e.target.value);
+        if (e.target.value.length > 0) handleNewItem(e.target.value);
         e.target.value = '';
       }
     });
-
   }
 }

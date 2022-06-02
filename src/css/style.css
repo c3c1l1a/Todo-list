@@ -54,14 +54,13 @@ body {
   align-items: center;
   border-top: solid mediumaquamarine 1px;
   padding: 0 10px;
-  
 }
 
 .todo-item input:hover {
   cursor: pointer;
 }
 
-.item-description  {
+.item-description {
   flex-grow: 4;
   border: none;
   font-size: 14px;
@@ -69,7 +68,6 @@ body {
   font-weight: bold;
   background-color: transparent;
   padding: 10px;
-
 }
 
 .strikethrough {
