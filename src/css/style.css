@@ -72,6 +72,11 @@ body {
 
 }
 
+.strikethrough {
+  text-decoration: line-through;
+  color: blue;
+}
+
 .item-description:focus-visible {
   outline: none;
 }

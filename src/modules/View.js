@@ -25,6 +25,12 @@ export default class {
 
     const itemDescription = itemTag.querySelector('.item-description');
     itemDescription.value = itemData.description;
+    if (itemData.completed){
+      itemDescription.classList.add('strikethrough');
+    } else {
+      itemDescription.classList.remove('strikethrough');
+    }
+
     itemDescription.addEventListener('input', (e)=> {
       e.preventDefault();
       updateDesciption(e.target.value, itemData.index);
@@ -59,7 +65,8 @@ export default class {
     this.input.addEventListener('keypress', (e) => {
       if (e.key === 'Enter'){
         e.preventDefault();
-        handleNewItem(e.target.value);
+        if (e.target.value.length > 0)
+          handleNewItem(e.target.value);
         e.target.value = '';
       }
     });

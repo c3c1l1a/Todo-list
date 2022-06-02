@@ -21,6 +21,7 @@ export default class {
   completedItem(index, bool, populateItems){
     this.items[index].completed = bool;
     this._updateLocalStorage(this.items);
+    populateItems();
   }
 
   addItem(inputValue, populateItems){
