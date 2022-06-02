@@ -12,9 +12,9 @@ body {
   flex-direction: column;
   width: 90%;
   position: relative;
-  top: 30%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background-color: #fff;
   box-shadow: 0 0 100px 50px lightgoldenrodyellow;
 }

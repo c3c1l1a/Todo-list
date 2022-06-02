@@ -1,30 +1,32 @@
 export default class {
   constructor() {
-    this.items = [
-      {
-        description: 'Wash the dishes',
-        completed: false,
-        index: 0,
-      },
-      {
-        description: 'Write my daily goals',
-        completed: false,
-        index: 1,
-      },
-      {
-        description: 'Complete my project for the day',
-        completed: false,
-        index: 2,
-      },
-      {
-        description: 'Do some yoga',
-        completed: false,
-        index: 3,
-      },
-    ];
+    this.items = JSON.parse(localStorage.getItem('todoItems'));
+  }
+
+  _updateLocalStorage(items){
+    if (items === null) {
+      this.items = [];
+      localStorage.setItem('todoItems', JSON.stringify(this.items));
+    } else {
+      this.items = items;
+      localStorage.setItem('todoItems', JSON.stringify(this.items));
+    }
   }
 
   getItems() {
+    this._updateLocalStorage(this.items);
     return this.items;
+  }
+
+  addItem(inputValue, populateItem){
+    const item = {
+      description: inputValue,
+      completed: false,
+      index: this.items.length-1,
+    }
+
+    this.items.push(item);
+    this._updateLocalStorage(this.items);
+    populateItem();
   }
 }

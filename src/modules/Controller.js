@@ -4,10 +4,21 @@ export default class {
     this.view = view;
   }
 
+
   populateItems() {
     const items = this.model.getItems();
-    this.model.items.sort((a, b) => b.index - a.index);
 
+    items.sort((a, b) => b.index - a.index);
+
+    this.view.refreshDOM();
     items.map((item) => this.view.generateTemplate(item));
+  }
+
+  _handleNewItem(inputValue){
+    this.model.addItem(inputValue, this.populateItems.bind(this));
+  }
+
+  addNewItem(){
+    this.view.submitNewItem(this._handleNewItem.bind(this));
   }
 }
