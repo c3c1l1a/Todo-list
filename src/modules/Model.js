@@ -18,6 +18,11 @@ export default class {
     return this.items;
   }
 
+  completedItem(index, bool, populateItems){
+    this.items[index].completed = bool;
+    this._updateLocalStorage(this.items);
+  }
+
   addItem(inputValue, populateItems){
     const item = {
       description: inputValue,

@@ -10,9 +10,14 @@ export default class {
     this.view.refreshDOM();
     const updateDesriptionHander = this.handleDescriptionUpdate.bind(this);
     const deleteItemHandler = this.handleDeleteItem.bind(this);
+    const markAsComplete = this.handleMarkAsComplete.bind(this);
 
-    const eventHandlers = [updateDesriptionHander, deleteItemHandler]
+    const eventHandlers = [updateDesriptionHander, deleteItemHandler, markAsComplete]
     items.slice(0).reverse().map((item) => this.view.generateTemplate(item, eventHandlers));
+  }
+
+  handleMarkAsComplete(index, bool){
+    this.model.completedItem(index, bool,this.populateItems.bind(this));
   }
 
   handleNewItem(inputValue){

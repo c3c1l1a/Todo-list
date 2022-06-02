@@ -13,42 +13,42 @@ export default class {
   }
 
   generateTemplate(itemData, eventHandlers) {
-    const [updateDesciption, deleteItem] = eventHandlers;
+    const [updateDesciption, deleteItem, markAsComplete] = eventHandlers;
     const itemTag = this.itemTemplate.content.firstElementChild.cloneNode(true);
+
+    const checkbox = itemTag.querySelector('.checkbox');
+    checkbox.checked = itemData.completed;
+
+    checkbox.addEventListener('click', (e)=>{
+      markAsComplete(itemData.index, e.target.checked);
+    });
 
     const itemDescription = itemTag.querySelector('.item-description');
     itemDescription.value = itemData.description;
+    itemDescription.addEventListener('input', (e)=> {
+      e.preventDefault();
+      updateDesciption(e.target.value, itemData.index);
+      itemTag.classList.remove('item-edit');
+    });
+
 
     const bin = itemTag.querySelector('.bin');
     const more = itemTag.querySelector('.more');
-
     bin.addEventListener('click', (e)=>{
       deleteItem(itemData.index);
     });
 
-    itemTag.addEventListener('click', (e) => {
-      e.preventDefault();
-      itemTag.classList.add('item-edit');
-      bin.style.display = 'block';
-      more.style.display = 'none';
-      
-      if (e.target.classList.contains('item-description')){
-        e.target.addEventListener('input', (e)=> {
-          e.preventDefault();
-          updateDesciption(e.target.value, itemData.index);
-          itemTag.classList.remove('item-edit');
-        });
-      }
-    });
 
     itemTag.addEventListener('mouseover', (e)=>{
       bin.style.display = 'block';
       more.style.display = 'none';
+      itemTag.classList.add('item-edit');
     });
 
     itemTag.addEventListener('mouseout', (e)=>{
       bin.style.display = 'none';
       more.style.display = 'block';
+      itemTag.classList.remove('item-edit');
     });
     
     this.todoItems.appendChild(itemTag);
