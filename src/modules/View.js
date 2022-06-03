@@ -3,12 +3,19 @@ export default class {
     this.itemTemplate = document.querySelector('.todo-item-template');
     this.todoItems = document.querySelector('.todo-items');
     this.input = document.querySelector('.new-item');
+    this.clearAllButton = document.querySelector('.todo-clear-completed');
   }
 
   refreshDOM() {
     if (this.todoItems.hasChildNodes()) {
       this.todoItems.textContent = '';
     }
+  }
+
+  clearAllCompleted(handleClearAll){
+    this.clearAllButton.addEventListener('click', (e)=>{
+      handleClearAll();
+    });
   }
 
   generateTemplate(itemData, eventHandlers) {

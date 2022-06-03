@@ -51,4 +51,19 @@ export default class {
     this.updateLocalStorage(this.items);
     populateItems();
   }
+
+  clearAllCompleted(populateItems){
+    let inComplete = this.items.filter((item)=>{
+      return !item.completed;
+    });
+
+    inComplete.map((item, i) => {
+      item.index = i;
+      return item.index;
+    });
+
+    this.items = inComplete;
+    this.updateLocalStorage(this.items);
+    populateItems();
+  }
 }
