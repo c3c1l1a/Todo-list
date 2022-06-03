@@ -52,10 +52,8 @@ export default class {
     populateItems();
   }
 
-  clearAllCompleted(populateItems){
-    let inComplete = this.items.filter((item)=>{
-      return !item.completed;
-    });
+  clearAllCompleted(populateItems) {
+    const inComplete = this.items.filter((item) => !item.completed);
 
     inComplete.map((item, i) => {
       item.index = i;

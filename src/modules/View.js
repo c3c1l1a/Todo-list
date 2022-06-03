@@ -12,8 +12,8 @@ export default class {
     }
   }
 
-  clearAllCompleted(handleClearAll){
-    this.clearAllButton.addEventListener('click', (e)=>{
+  clearAllCompleted(handleClearAll) {
+    this.clearAllButton.addEventListener('click', () => {
       handleClearAll();
     });
   }

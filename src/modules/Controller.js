@@ -11,7 +11,6 @@ export default class {
     const updateDesriptionHander = this.handleDescriptionUpdate.bind(this);
     const deleteItemHandler = this.handleDeleteItem.bind(this);
     const markAsComplete = this.handleMarkAsComplete.bind(this);
-    const clearAllCompleted = this.handleMarkAsComplete.bind(this);
 
     const eventHandlers = [updateDesriptionHander, deleteItemHandler, markAsComplete];
     items.slice(0).reverse().map((item) => this.view.generateTemplate(item, eventHandlers));
@@ -33,7 +32,7 @@ export default class {
     this.model.deleteItem(index, this.populateItems.bind(this));
   }
 
-  handleClearAllCompleted(){
+  handleClearAllCompleted() {
     this.model.clearAllCompleted(this.populateItems.bind(this));
   }
 
@@ -41,7 +40,7 @@ export default class {
     this.view.submitNewItem(this.handleNewItem.bind(this));
   }
 
-  clearAllCompleted(){
+  clearAllCompleted() {
     this.view.clearAllCompleted(this.handleClearAllCompleted.bind(this));
   }
 }
