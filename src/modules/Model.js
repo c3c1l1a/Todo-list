@@ -31,7 +31,6 @@ export default class {
       index: this.items.length,
     };
 
-    // this.items.sort((a, b) => b.index - a.index);
     this.items.push(item);
     this.updateLocalStorage(this.items);
     populateItems();
