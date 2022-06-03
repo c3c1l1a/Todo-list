@@ -32,7 +32,15 @@ export default class {
     this.model.deleteItem(index, this.populateItems.bind(this));
   }
 
+  handleClearAllCompleted() {
+    this.model.clearAllCompleted(this.populateItems.bind(this));
+  }
+
   addNewItem() {
     this.view.submitNewItem(this.handleNewItem.bind(this));
+  }
+
+  clearAllCompleted() {
+    this.view.clearAllCompleted(this.handleClearAllCompleted.bind(this));
   }
 }
