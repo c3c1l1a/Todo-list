@@ -6,8 +6,33 @@ export default class {
 
   populateItems() {
     const items = this.model.getItems();
-    this.model.items.sort((a, b) => b.index - a.index);
 
-    items.map((item) => this.view.generateTemplate(item));
+    this.view.refreshDOM();
+    const updateDesriptionHander = this.handleDescriptionUpdate.bind(this);
+    const deleteItemHandler = this.handleDeleteItem.bind(this);
+    const markAsComplete = this.handleMarkAsComplete.bind(this);
+
+    const eventHandlers = [updateDesriptionHander, deleteItemHandler, markAsComplete];
+    items.slice(0).reverse().map((item) => this.view.generateTemplate(item, eventHandlers));
+  }
+
+  handleMarkAsComplete(index, bool) {
+    this.model.completedItem(index, bool, this.populateItems.bind(this));
+  }
+
+  handleNewItem(inputValue) {
+    this.model.addItem(inputValue, this.populateItems.bind(this));
+  }
+
+  handleDescriptionUpdate(value, index) {
+    this.model.updateItem(value, index);
+  }
+
+  handleDeleteItem(index) {
+    this.model.deleteItem(index, this.populateItems.bind(this));
+  }
+
+  addNewItem() {
+    this.view.submitNewItem(this.handleNewItem.bind(this));
   }
 }
