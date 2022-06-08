@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "build": "webpack --mode=development",
     "start": "webpack serve --open --mode=development",
     "watch": "webpack --watch"
@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/c3c1l1a/Webpack-exercise#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^28.1.1",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
