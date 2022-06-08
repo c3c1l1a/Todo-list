@@ -1,7 +1,10 @@
-//const Model = require('./src/modules/Model.js');
-import Model from './src/modules/Model';
+import Model from './src/modules/Model.js';
 
-
-test('', () => {
-  expect(true).toBe(true);
+describe('Model', () => {
+  test('Should return modelTest complete', () => {
+    const result = Model();
+    // eslint-disable-next-line no-console
+    console.log(result);
+    expect(result).toBe('modelTest complete');
+  });
 });
