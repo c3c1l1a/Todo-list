@@ -3,9 +3,9 @@
  * @jest-environment jsdom
  */
 
-import Model from './src/modules/Model';
-import Controller from './src/modules/Controller';
-import View from './src/modules/View';
+import Model from '../modules/Model.js';
+import Controller from '../modules/Controller.js';
+import View from '../modules/View.js';
 
 document.body.innerHTML = `
     <div class="todo-container">
@@ -51,8 +51,6 @@ describe('App test', () => {
       localStorage.clear();
       // and reset all mocks
       jest.clearAllMocks();
-
-      // clearAllMocks will impact your other mocks too, so you can optionally reset individual mocks instead:
       localStorage.setItem.mockClear();
     });
 
