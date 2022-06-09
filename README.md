@@ -41,7 +41,7 @@ This project is open source and you are free take modify and do with as you wish
 ### Build for deployment
 - use `npm run build` to build files for deployment and distribution
 
-### Run code lintes 🧪
+### Run code linters 🧪
 > Run the commands below in the terminal or `git bash`.
 - `npx hint .` : for the `html` codebase and use of best practices.
 - `npx stylelint "**/*.{css,scss}"` :  for the `css` codebase and use of best practices. you can add 
@@ -59,6 +59,9 @@ This project is open source and you are free take modify and do with as you wish
 - LinkedIn: [cecilia-wangui-mukima](https://linkedin.com/in/linkedinhandle)
 - Profile [c3cl1ia.github.io](https://c3c1l1a.github.io)
 
+
+- Github: [@CrystallineButterfly](https://github.com/CrystallineButterfly/)
+- Twitter [@CrystAlline_k42](https://twitter.com/CrystAlline_k42)
 
 ![](https://github-readme-stats.vercel.app/api?username=c3c1l1a&count_private=true&theme=dark&show_icons=true)
 
