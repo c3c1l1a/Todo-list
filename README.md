@@ -11,9 +11,9 @@
 - Major languages : HTMl & CSS, JavaScript
 - Technologies used : Github, Git and Linters
 
-## Live Demo (Coming soon)
+## Live Demo 
 
->
+> Here is the [link](https://c3c1l1a.github.io/Todo-list/) to the live demo
 
 ## Getting Started
 
@@ -30,9 +30,18 @@ This project is open source and you are free take modify and do with as you wish
 
 
 ### Install 
-- Once you have the code navigate into the root folder and run `npm install` to get all dependecies required to run the linters checks and set up webpack!
+- Once you have the code navigate into the root folder and run `npm install` to get all dependecies required to run Unit tests, linters checks and set up webpack
 
-### Run test 🧪
+### Run Unit tests
+- Use the `npm test` command to run all the unit test
+
+### Run webpack live server
+- use `npm start` to open the app with webpacks live server
+
+### Build for deployment
+- use `npm run build` to build files for deployment and distribution
+
+### Run code lintes 🧪
 > Run the commands below in the terminal or `git bash`.
 - `npx hint .` : for the `html` codebase and use of best practices.
 - `npx stylelint "**/*.{css,scss}"` :  for the `css` codebase and use of best practices. you can add 
