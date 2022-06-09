@@ -1,6 +1,17 @@
 import Model from './src/modules/Model.js';
 
-jest.mock('Model');
+// test('properly adds Model', () => {
+//   const model = [1, 2, 3];
+//   expect(Model(model)).toEqual(model);
+//   expect(Model(model)).not.toBe(model);
+// });
+
+jest.mock('./src/modules/Model.js', () => ({
+  __esModule: true,
+  default: {
+    get: jest.fn().mockResolvedValue({ data: { name: 'Mock model' } }),
+  },
+}));
 
 describe('Model', () => {
   test('Should return Model', async () => {
