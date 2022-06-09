@@ -30,7 +30,7 @@ This project is open source and you are free take modify and do with as you wish
 
 
 ### Install 
-- Once you have the code navigate into the root folder and run `npm install` to get all dependecies required to run the linters checks and set up webpack
+- Once you have the code navigate into the root folder and run `npm install` to get all dependecies required to run the linters checks and set up webpack!
 
 ### Run test 🧪
 > Run the commands below in the terminal or `git bash`.

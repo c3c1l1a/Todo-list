@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /**
  * @jest-environment jsdom
  */
@@ -32,48 +33,48 @@ document.body.innerHTML = `
     </div>
 `;
 
-let model, view, controller, KEY, VALUE;
+let model; let view; let controller; let KEY; let
+  VALUE;
 beforeAll(() => {
   model = new Model();
   view = new View();
 
   controller = new Controller(model, view);
-  KEY = 'todoItems'; 
-  VALUE = "[]";
+  KEY = 'todoItems';
+  VALUE = '[]';
 });
 
-describe('App test', ()=> {
-  describe('Setup localStorage', ()=> {
+describe('App test', () => {
+  describe('Setup localStorage', () => {
     beforeEach(() => {
       // to fully reset the state between tests, clear the storage
       localStorage.clear();
       // and reset all mocks
       jest.clearAllMocks();
-      
+
       // clearAllMocks will impact your other mocks too, so you can optionally reset individual mocks instead:
       localStorage.setItem.mockClear();
     });
 
-    it('test that it creates empty model.items instance array', ()=>{
+    it('test that it creates empty model.items instance array', () => {
       model.updateLocalStorage([]);
       expect(model.items).toEqual([]);
     });
 
-    it('test that model.items can be updated with items', ()=> {
+    it('test that model.items can be updated with items', () => {
       model.updateLocalStorage([]);
       expect(localStorage.setItem).toHaveBeenLastCalledWith(KEY, VALUE);
     });
   });
 
-  describe('Add an item', ()=> {
-
+  describe('Add an item', () => {
     beforeEach(() => {
       localStorage.clear();
       jest.clearAllMocks();
       localStorage.setItem.mockClear();
     });
 
-    it('test that model.items can be updated with items', ()=> {
+    it('test that model.items can be updated with items', () => {
       model.addItem('item1', jest.fn());
       model.addItem('item2', jest.fn());
       controller.populateItems();
@@ -81,36 +82,36 @@ describe('App test', ()=> {
       expect(document.querySelectorAll('.todo-item').length).toBe(2);
       expect(model.items.length).toBe(2);
       expect(model.items).toEqual([{
-          description: 'item1', 
-          completed: false, 
-          index: 0
-        },{
-          description: 'item2', 
-          completed: false, 
-          index: 1
-        }
+        description: 'item1',
+        completed: false,
+        index: 0,
+      }, {
+        description: 'item2',
+        completed: false,
+        index: 1,
+      },
       ]);
     });
   });
 
-  describe('Remove an item', ()=> {
+  describe('Remove an item', () => {
     beforeEach(() => {
       localStorage.clear();
       jest.clearAllMocks();
       localStorage.setItem.mockClear();
     });
 
-    it('test that model.items can be remove an item', ()=> {
+    it('test that model.items can be remove an item', () => {
       model.deleteItem(1, jest.fn());
       controller.populateItems();
 
       expect(document.querySelectorAll('.todo-item').length).toBe(1);
       expect(model.items.length).toBe(1);
       expect(model.items).toEqual([{
-          description: 'item1', 
-          completed: false, 
-          index: 0
-        }
+        description: 'item1',
+        completed: false,
+        index: 0,
+      },
       ]);
     });
   });
