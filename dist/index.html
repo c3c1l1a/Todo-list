@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack excercise</title>
-<script defer src="index.bundle.js"></script></head>
+    <title>Todo List</title>
+<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
 <body>
-    <h1>Testing webpack</h1>
+    <div class="todo-container">
+        <div class="todo-header">
+            <p>Today's Todo list </p>
+            <img class="icon" src="f438effffd246d064743.svg" alt="Refresh list icon">  
+        </div>
+        <div class="todo-new-item">
+            <input class="new-item" type="text" placeholder="Add a new item.." name="new-item">
+            <img class="icon" src="71e6bc9c6b7790b0023a.svg" alt="Enter key icon">
+        </div>
+        <div class="todo-items">
+            <template class="todo-item-template">
+                <div class="todo-item">
+                    <input class="checkbox" type="checkbox">
+                    <input class="item-description" name="item-description">
+                    <img class="icon bin" src="9791eda45730d66280b3.svg" alt="Show more item options">
+                    <img class="icon more" src="8ae4449c8b41ee3a8178.svg" alt="Show more item options">
+                </div>  
+            </template>
+        </div>
+        <div class="todo-clear-completed">
+            <p>Clear all completed</p>
+        </div>
+    </div>
 </body>
 </html>

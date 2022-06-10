@@ -1,6 +1,7 @@
 export default class {
   constructor() {
     this.items = JSON.parse(localStorage.getItem('todoItems'));
+    this.updateLocalStorage(this.items);
   }
 
   updateLocalStorage(items) {

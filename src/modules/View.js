@@ -23,6 +23,7 @@ export default class {
     const itemTag = this.itemTemplate.content.firstElementChild.cloneNode(true);
 
     const checkbox = itemTag.querySelector('.checkbox');
+    checkbox.setAttribute('name', itemData.index);
     checkbox.checked = itemData.completed;
 
     checkbox.addEventListener('click', (e) => {
@@ -30,6 +31,8 @@ export default class {
     });
 
     const itemDescription = itemTag.querySelector('.item-description');
+    itemDescription.setAttribute('id', itemData.index);
+
     itemDescription.value = itemData.description;
     if (itemData.completed) {
       itemDescription.classList.add('strikethrough');
