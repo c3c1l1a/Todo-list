@@ -121,19 +121,26 @@ describe('App test', () => {
     });
 
     it('test to ensure that task description is edited properly', () => {
-      model.updateItem(1, jest.fn());
-      controller.populateItems();
+      //model.updateItem(1, jest.fn());
+      //controller.populateItems();
 
-      const input = document.querySelectorAll();
+      document.getElementById('0').value = 'item1a'
+      document.getElementById('0').dispatchEvent(new InputEvent('input'));
 
-      expect(document.querySelectorAll('.item-description').length).toBe(1);
-      expect(input.characters.length).toBe(1);
-      expect(input.characters.length).toEqual([{
-        description: 'item1',
-        characters: 'input',
+      expect(document.getElementById('0').value).toBe('item1a');
+      expect(model.getItems()).toEqual([{
+        description: 'item1a',
         completed: false,
-        index: 1,
+        index: 0,
       }]);
+      
+      // expect(input.characters.length).toBe(1);
+      // expect(input.characters.length).toEqual([{
+      //   description: 'item1',
+      //   characters: 'input',
+      //   completed: false,
+      //   index: 1,
+      // }]);
     });
   });
 });

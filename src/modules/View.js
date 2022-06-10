@@ -30,6 +30,8 @@ export default class {
     });
 
     const itemDescription = itemTag.querySelector('.item-description');
+    itemDescription.setAttribute('id', itemData.index);
+
     itemDescription.value = itemData.description;
     if (itemData.completed) {
       itemDescription.classList.add('strikethrough');
@@ -39,6 +41,7 @@ export default class {
 
     itemDescription.addEventListener('input', (e) => {
       e.preventDefault();
+      console.log(e.target.value);
       updateDesciption(e.target.value, itemData.index);
       itemTag.classList.remove('item-edit');
     });
