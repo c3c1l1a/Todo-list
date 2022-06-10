@@ -140,25 +140,24 @@ describe('App test', () => {
       ]);
     });
   });
-  
-  describe('Update an item\`s completed status', () => {
+
+  describe('Update an items completed status', () => {
     beforeEach(() => {
       localStorage.clear();
       jest.clearAllMocks();
       localStorage.setItem.mockClear();
     });
 
-
     it('test to ensure that task complete status updates to true', () => {
       document.getElementsByName('0')[0].dispatchEvent(new MouseEvent('click'));
-      
+
       expect(document.getElementsByName('0')[0].checked).toEqual(true);
       expect(model.getItems()).toEqual([{
         description: 'item1a',
         completed: true,
         index: 0,
       }]);
-    }); 
+    });
   });
   describe('Clear completed tasks', () => {
     beforeEach(() => {
