@@ -113,4 +113,27 @@ describe('App test', () => {
       ]);
     });
   });
+  describe('Edit task description', () => {
+    beforeEach(() => {
+      localStorage.clear();
+      jest.clearAllMocks();
+      localStorage.setItem.mockClear();
+    });
+
+    it('test to ensure that task description is edited properly', () => {
+      model.updateItem(1, jest.fn());
+      controller.populateItems();
+
+      const input = document.querySelectorAll();
+
+      expect(document.querySelectorAll('.item-description').length).toBe(1);
+      expect(input.characters.length).toBe(1);
+      expect(input.characters.length).toEqual([{
+        description: 'item1',
+        characters: 'input',
+        completed: false,
+        index: 1,
+      }]);
+    });
+  });
 });
