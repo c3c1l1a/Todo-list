@@ -33,8 +33,11 @@ document.body.innerHTML = `
     </div>
 `;
 
-let model; let view; let controller; let KEY; let
-  VALUE;
+let model;
+let view;
+let controller;
+let KEY;
+let VALUE;
 beforeAll(() => {
   model = new Model();
   view = new View();
@@ -79,15 +82,17 @@ describe('App test', () => {
 
       expect(document.querySelectorAll('.todo-item').length).toBe(2);
       expect(model.items.length).toBe(2);
-      expect(model.items).toEqual([{
-        description: 'item1',
-        completed: false,
-        index: 0,
-      }, {
-        description: 'item2',
-        completed: false,
-        index: 1,
-      },
+      expect(model.items).toEqual([
+        {
+          description: 'item1',
+          completed: false,
+          index: 0,
+        },
+        {
+          description: 'item2',
+          completed: false,
+          index: 1,
+        },
       ]);
     });
   });
@@ -105,11 +110,12 @@ describe('App test', () => {
 
       expect(document.querySelectorAll('.todo-item').length).toBe(1);
       expect(model.items.length).toBe(1);
-      expect(model.items).toEqual([{
-        description: 'item1',
-        completed: false,
-        index: 0,
-      },
+      expect(model.items).toEqual([
+        {
+          description: 'item1',
+          completed: false,
+          index: 0,
+        },
       ]);
     });
   });
@@ -121,26 +127,32 @@ describe('App test', () => {
     });
 
     it('test to ensure that task description is edited properly', () => {
-      //model.updateItem(1, jest.fn());
-      //controller.populateItems();
-
-      document.getElementById('0').value = 'item1a'
+      document.getElementById('0').value = 'item1a';
       document.getElementById('0').dispatchEvent(new InputEvent('input'));
 
       expect(document.getElementById('0').value).toBe('item1a');
-      expect(model.getItems()).toEqual([{
-        description: 'item1a',
-        completed: false,
-        index: 0,
-      }]);
-      
-      // expect(input.characters.length).toBe(1);
-      // expect(input.characters.length).toEqual([{
-      //   description: 'item1',
-      //   characters: 'input',
-      //   completed: false,
-      //   index: 1,
-      // }]);
+      expect(model.getItems()).toEqual([
+        {
+          description: 'item1a',
+          completed: false,
+          index: 0,
+        },
+      ]);
+    });
+  });
+  describe('Clear completed tasks', () => {
+    beforeEach(() => {
+      localStorage.clear();
+      jest.clearAllMocks();
+      localStorage.setItem.mockClear();
+    });
+
+    it('test to ensure completed tasks are cleared', () => {
+      model.completedItem(0, true, jest.fn());
+      controller.populateItems();
+      document.querySelector('.todo-clear-completed').dispatchEvent(new MouseEvent('click'));
+      expect(document.querySelectorAll('.todo-item').length).toBe(0);
+      expect(model.items.length).toBe(0);
     });
   });
 });
