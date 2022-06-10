@@ -140,6 +140,26 @@ describe('App test', () => {
       ]);
     });
   });
+  
+  describe('Update an item\`s completed status', () => {
+    beforeEach(() => {
+      localStorage.clear();
+      jest.clearAllMocks();
+      localStorage.setItem.mockClear();
+    });
+
+
+    it('test to ensure that task complete status updates to true', () => {
+      document.getElementsByName('0')[0].dispatchEvent(new MouseEvent('click'));
+      
+      expect(document.getElementsByName('0')[0].checked).toEqual(true);
+      expect(model.getItems()).toEqual([{
+        description: 'item1a',
+        completed: true,
+        index: 0,
+      }]);
+    }); 
+  });
   describe('Clear completed tasks', () => {
     beforeEach(() => {
       localStorage.clear();
@@ -149,7 +169,7 @@ describe('App test', () => {
 
     it('test to ensure completed tasks are cleared', () => {
       model.completedItem(0, true, jest.fn());
-      controller.populateItems();
+      controller.clearAllCompleted(); // Changed this from controller.populateItems();
       document.querySelector('.todo-clear-completed').dispatchEvent(new MouseEvent('click'));
       expect(document.querySelectorAll('.todo-item').length).toBe(0);
       expect(model.items.length).toBe(0);

@@ -23,6 +23,7 @@ export default class {
     const itemTag = this.itemTemplate.content.firstElementChild.cloneNode(true);
 
     const checkbox = itemTag.querySelector('.checkbox');
+    checkbox.setAttribute('name', itemData.index);
     checkbox.checked = itemData.completed;
 
     checkbox.addEventListener('click', (e) => {
@@ -41,7 +42,6 @@ export default class {
 
     itemDescription.addEventListener('input', (e) => {
       e.preventDefault();
-      console.log(e.target.value);
       updateDesciption(e.target.value, itemData.index);
       itemTag.classList.remove('item-edit');
     });
