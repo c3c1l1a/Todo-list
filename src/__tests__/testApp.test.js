@@ -1,8 +1,9 @@
-
 /**
  * @jest-environment jsdom
  */
-
+import Model from '../modules/Model.js';
+import Controller from '../modules/Controller.js';
+import View from '../modules/View.js';
 
 document.body.innerHTML = `
 <div class="todo-container">
@@ -30,16 +31,12 @@ document.body.innerHTML = `
 </div>
 `;
 
-import Model from '../modules/Model.js';
-import Controller from '../modules/Controller.js';
-import View from '../modules/View.js';
-
 const model = new Model();
 const view = new View();
 const controller = new Controller(model, view);
 
-describe('Add todo', ()=> {
-  test('Test if items are added to local storage', ()=> {
+describe('Add todo', () => {
+  test('Test if items are added to local storage', () => {
     model.addItem('item1', jest.fn());
     model.addItem('item2', jest.fn());
     controller.populateItems();
