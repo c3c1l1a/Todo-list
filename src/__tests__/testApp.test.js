@@ -84,6 +84,7 @@ describe('Clear all complete', ()=>{
         controller.populateItems();
 
         expect(model.getItems().length).toBe(0);
+        expect(model.getItems().length).toEqual(JSON.parse(localStorage.getItem('todoItems')).length);
         expect(document.querySelector('.todo-items').hasChildNodes()).toBe(false);
     });
 });
