@@ -78,13 +78,13 @@ describe('Update Todo', () => {
   });
 });
 
-describe('Clear all complete', ()=>{
-    test("Test if all checked as complete are removed", ()=> {
-        controller.handleClearAllCompleted();
-        controller.populateItems();
+describe('Clear all complete', () => {
+  test('Test if all checked as complete are removed', () => {
+    controller.handleClearAllCompleted();
+    controller.populateItems();
 
-        expect(model.getItems().length).toBe(0);
-        expect(model.getItems().length).toEqual(JSON.parse(localStorage.getItem('todoItems')).length);
-        expect(document.querySelector('.todo-items').hasChildNodes()).toBe(false);
-    });
+    expect(model.getItems().length).toBe(0);
+    expect(model.getItems().length).toEqual(JSON.parse(localStorage.getItem('todoItems')).length);
+    expect(document.querySelector('.todo-items').hasChildNodes()).toBe(false);
+  });
 });
