@@ -77,3 +77,13 @@ describe('Update Todo', () => {
     expect(document.querySelector('.checkbox').checked).toBe(true);
   });
 });
+
+describe('Clear all complete', ()=>{
+    test("Test if all checked as complete are removed", ()=> {
+        controller.handleClearAllCompleted();
+        controller.populateItems();
+
+        expect(model.getItems().length).toBe(0);
+        expect(document.querySelector('.todo-items').hasChildNodes()).toBe(false);
+    });
+});
