@@ -41,7 +41,6 @@ export default class {
 
     itemDescription.addEventListener('input', (e) => {
       e.preventDefault();
-      console.log(e.target.value);
       updateDesciption(e.target.value, itemData.index);
       itemTag.classList.remove('item-edit');
     });

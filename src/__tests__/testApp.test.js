@@ -57,3 +57,23 @@ describe('remove todo', () => {
     expect(document.querySelectorAll('.todo-item').length).toBe(1);
   });
 });
+
+describe('Edit todo', () => {
+  test('Test if items are edited from local storage.', () => {
+    controller.handleDescriptionUpdate('java', 0);
+    controller.populateItems();
+
+    expect(model.getItems()[0].description).toEqual(JSON.parse(localStorage.getItem('todoItems'))[0].description);
+    expect(document.querySelector('.todo-items').hasChildNodes()).toBe(true);
+  });
+});
+
+describe('Update Todo', () => {
+  test('Test if Items are Updated to the local storage. ', () => {
+    controller.handleMarkAsComplete(0, true);
+    controller.populateItems();
+
+    expect(model.getItems()[0].completed).toEqual(JSON.parse(localStorage.getItem('todoItems'))[0].completed);
+    expect(document.querySelector('.checkbox').checked).toBe(true);
+  });
+});
